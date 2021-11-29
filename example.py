@@ -1,11 +1,16 @@
 #!/usr/bin/python3
 
+import sys
 from recoll import recoll
 
 db = recoll.connect()
 query = db.query()
-nres = query.execute("Epu")
+# print("Keywords: ", end="",  file=sys.stderr)
+# key = input();
+args=sys.argv
+key=args[1]
+nres = query.execute(key)
 results = query.fetchmany(20)
 for doc in results:
-    print("\n<a href=%s>%s</a>\n" % (doc.url, doc.title))
+    print("<a href=%s>%s</a> <BR>" % (doc.url, doc.title))
 
