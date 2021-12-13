@@ -10,7 +10,7 @@ query = db.query()
 args=sys.argv
 key=args[1]
 nres = query.execute(key)
-results = query.fetchmany(20)
+results = query.fetchmany(5000)
 for doc in results:
     print("<a href=%s>%s</a> <BR>" % (doc.url, doc.title))
 
